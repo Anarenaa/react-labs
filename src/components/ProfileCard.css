@@ -1,0 +1,106 @@
+.profile-card {
+  width: min(100%, 440px);
+  padding: 40px;
+  border: 1px solid #e6e8f0;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgb(34 45 80 / 12%);
+  text-align: left;
+}
+
+.profile-card__eyebrow {
+  margin: 0 0 12px;
+  color: #6654d9;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.profile-card__name {
+  margin: 0;
+  color: #20243a;
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  letter-spacing: -0.06em;
+  line-height: 1.1;
+}
+
+.profile-card__group {
+  margin: 12px 0 32px;
+  color: #6d7286;
+}
+
+.profile-card__group span {
+  color: #30354c;
+  font-weight: 700;
+}
+
+.profile-card__section-title {
+  margin: 0 0 16px;
+  color: #30354c;
+  font-size: 1.125rem;
+  font-weight: 650;
+}
+
+.profile-card__technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-card__technologies li {
+  padding: 8px 14px;
+  border: 1px solid #e2defe;
+  border-radius: 999px;
+  background: #f3f1ff;
+  color: #5142b8;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.profile-card__like-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 12px;
+  background: #6654d9;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 650;
+  transition:
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+
+.profile-card__like-button:hover {
+  transform: translateY(-1px);
+  background: #5543c6;
+}
+
+.profile-card__like-button:focus-visible {
+  outline: 3px solid #aaa0ff;
+  outline-offset: 3px;
+}
+
+.profile-card__like-button span {
+  display: grid;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 20%);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 520px) {
+  .profile-card {
+    padding: 30px 24px;
+  }
+}
