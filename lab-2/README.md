@@ -28,9 +28,10 @@ graph TD;
     App --> Card1[Card];
     App --> Card2[Card];
 
-    Card1 --> Profile1["Profile (key: 1)"];
-    Card1 --> Profile2["Profile (key: 2)"];
+    Card1 --> Avatar;
 
+    Card2 --> Profile1["Profile (key: 1)"];
+    Card2 --> Profile2["Profile (key: 2)"];
     Card2 --> Profile3["Profile (key: 3)"];
     Card2 --> Profile4["Profile (key: 4)"];
 
@@ -44,9 +45,10 @@ graph TD;
 App
 ├── Header
 ├── Card (Тімлід)
-│   └── Profile (key="1")
-│       └── Avatar
+│   └── Avatar
 └── Card (Учасники)
+    ├── Profile (key="1")
+    │   └── Avatar
     ├── Profile (key="2")
     │   └── Avatar
     ├── Profile (key="3")
@@ -60,14 +62,17 @@ App
 Заповніть за рядками `import` у файлах `src/` (§4.6).
 
 ```mermaid
-graph LR;
+graph TD;
+    main.jsx --> index.css;
     main.jsx --> App.jsx;
-    App.jsx --> Header.jsx;
-    App.jsx --> Card.jsx;
-    Card.jsx --> Profile.jsx;
-    Profile.jsx --> Avatar.jsx;
 
+    App.jsx --> Header.jsx;
     App.jsx --> data.js;
+    App.jsx --> Card.jsx;
+    App.jsx --> Profile.jsx;
+    App.jsx --> Avatar.jsx;
+
+    Profile.jsx --> Avatar.jsx;
 ```
 
 ```text
@@ -76,7 +81,8 @@ main.jsx
 └── App.jsx
     ├── Header.jsx
     ├── data.js
-    └── Card.jsx
-        └── Profile.jsx
-            └── Avatar.jsx
+    ├── Card.jsx
+    ├── Profile.jsx
+    │   └── Avatar.jsx
+    └── Avatar.jsx
 ```
