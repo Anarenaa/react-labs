@@ -22,14 +22,61 @@ https://denysmatsevych.github.io/web-development-2026/react/labs/lab-2/
 
 Заповніть за вкладкою **Components ⚛** у React DevTools (§4.6).
 
+```mermaid
+graph TD;
+    App --> Header;
+    App --> Card1[Card];
+    App --> Card2[Card];
+
+    Card1 --> Profile1["Profile (key: 1)"];
+    Card1 --> Profile2["Profile (key: 2)"];
+
+    Card2 --> Profile3["Profile (key: 3)"];
+    Card2 --> Profile4["Profile (key: 4)"];
+
+    Profile1 --> Avatar1[Avatar];
+    Profile2 --> Avatar2[Avatar];
+    Profile3 --> Avatar3[Avatar];
+    Profile4 --> Avatar4[Avatar];
+```
+
 ```text
 App
+├── Header
+├── Card (Тімлід)
+│   └── Profile (key="1")
+│       └── Avatar
+└── Card (Учасники)
+    ├── Profile (key="2")
+    │   └── Avatar
+    ├── Profile (key="3")
+    │   └── Avatar
+    └── Profile (key="4")
+        └── Avatar
 ```
 
 ## Дерево залежностей модулів
 
 Заповніть за рядками `import` у файлах `src/` (§4.6).
 
+```mermaid
+graph LR;
+    main.jsx --> App.jsx;
+    App.jsx --> Header.jsx;
+    App.jsx --> Card.jsx;
+    Card.jsx --> Profile.jsx;
+    Profile.jsx --> Avatar.jsx;
+
+    App.jsx --> data.js;
+```
+
 ```text
 main.jsx
+├── index.css
+└── App.jsx
+    ├── Header.jsx
+    ├── data.js
+    └── Card.jsx
+        └── Profile.jsx
+            └── Avatar.jsx
 ```
