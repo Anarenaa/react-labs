@@ -42,3 +42,27 @@ flowchart TD
 
   App -.->|getItem| localStorage[("menu.filterText, menu.inStockOnly")]
 ```
+
+Нова діаграма показує потік даних після винесення стану фільтрів у
+`FilterableMenuTable`: суцільні стрілки позначають пропси й дані меню,
+пунктирні — події від `SearchBar` та читання/запис у `localStorage`.
+GitHub показує цей блок діаграмою; перевірити її можна в
+https://mermaid.live/.
+
+```mermaid
+flowchart TD
+  App --> FilterableMenuTable
+  App --> CafeInfo
+
+  FilterableMenuTable -->|"filterText, inStockOnly, callbacks"| SearchBar
+  SearchBar -.->|"onFilterTextChange, onInStockOnlyChange"| FilterableMenuTable
+
+  FilterableMenuTable -->|"menu, filterText, inStockOnly"| MenuTable
+  MenuTable -->|"menu, filterText, inStockOnly"| filterMenu["filterMenu()"]
+  filterMenu -->|"visibleMenu"| MenuTable
+  MenuTable -->|"category"| MenuCategory["MenuCategory × 3"]
+  MenuCategory -->|"item"| MenuItemRow["MenuItemRow × 4, 3, 3"]
+
+  localStorage[("localStorage")] -.->|"getItem: menu.filterText, menu.inStockOnly"| FilterableMenuTable
+  FilterableMenuTable -.->|"setItem: menu.filterText, menu.inStockOnly"| localStorage
+```
