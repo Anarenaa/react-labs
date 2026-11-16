@@ -1,41 +1,17 @@
-import { useEffect, useState } from 'react'
-import { formatTime } from '../formatTime.js'
+import { useState } from 'react'
+import TimerView from './TimerView.jsx'
 
 export default function BrewTimer({ method }) {
-  const [secondsLeft, setSecondsLeft] = useState(method.seconds)
-  const [isRunning, setIsRunning] = useState(false)
-
-  useEffect(() => {
-    if (!isRunning) return
-    setInterval(() => {
-      setSecondsLeft(secondsLeft - 1)
-    }, 1000)
-  }, [isRunning])
+  const [status, setStatus] = useState('idle')
 
   return (
-    <article className="brew-timer" aria-labelledby={`${method.id}-title`}>
-      <h3 id={`${method.id}-title`}>{method.name}</h3>
-      <p>{method.recipe}</p>
-      <p className="time" role="timer">
-        {formatTime(secondsLeft)}
-      </p>
-      <div className="timer-controls">
-        <button type="button" onClick={() => setIsRunning(true)}>
-          Старт
-        </button>
-        <button type="button" onClick={() => setIsRunning(false)}>
-          Пауза
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setIsRunning(false)
-            setSecondsLeft(method.seconds)
-          }}
-        >
-          Скинути
-        </button>
-      </div>
-    </article>
+    <TimerView
+      method={method}
+      secondsLeft={method.seconds}
+      status={status}
+      onStart={() => setStatus('running')}
+      onPause={() => setStatus('paused')}
+      onReset={() => setStatus('idle')}
+    />
   )
 }
