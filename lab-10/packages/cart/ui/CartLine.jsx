@@ -1,8 +1,6 @@
 import { useId } from 'react'
-import { useCart } from '../model/useCart.js'
 
-export default function CartLine({ line }) {
-  const { setQuantity, remove } = useCart()
+export default function CartLine({ line, setQuantity, remove }) {
   const titleId = useId()
 
   return (

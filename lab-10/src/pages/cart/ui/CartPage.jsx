@@ -1,9 +1,9 @@
 import { Link } from '../../../shared/ui/index.js'
 import { paths } from '../../../shared/lib/index.js'
-import { CartLine, useCart } from '../../../entities/cart/index.js'
+import { CartLine, useCart } from '@coffee/cart'
 
 export default function CartPage() {
-  const { lines, total } = useCart()
+  const { lines, total, setQuantity, remove } = useCart()
 
   return (
     <section className="cart-page" aria-labelledby="cart-title">
@@ -17,7 +17,11 @@ export default function CartPage() {
           <ul className="cart-lines">
             {lines.map((line) => (
               <li key={line.id}>
-                <CartLine line={line} />
+                <CartLine
+                  line={line}
+                  setQuantity={setQuantity}
+                  remove={remove}
+                />
               </li>
             ))}
           </ul>
